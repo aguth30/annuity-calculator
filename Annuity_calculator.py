@@ -1,5 +1,5 @@
 """
-🧮 Generational Annuity Calculator — Streamlit Edition
+🧮 Annuity Calculator — Streamlit Edition
 ──────────────────────────────────────────────────────
 Beautiful web-based UI for annuity pricing.
 Always looks for data files in the same folder as this script.
@@ -286,10 +286,10 @@ class AnnuityCalculator:
 
 # Header
 st.markdown(
-    '<div class="main-header">🧮 Generational Annuity Calculator</div>',
+    '<div class="main-header">🧮 Annuity Calculator</div>',
     unsafe_allow_html=True)
 st.markdown(
-    '<div class="sub-header">Price annuities using generational mortality '
+    '<div class="sub-header">Price annuities using mortality '
     'tables and market yield curves</div>',
     unsafe_allow_html=True)
 
@@ -621,5 +621,5 @@ if st.button("🚀  Calculate Annuity", type="primary",
 
 # Footer
 st.markdown("---")
-st.caption("🧮 Generational Annuity Calculator | Built for actuarial pricing "
-           "| Uses generational mortality tables with market yield curves")
+st.caption("🧮 Annuity Calculator | Built for actuarial pricing "
+           "| Uses mortality tables with market yield curves")

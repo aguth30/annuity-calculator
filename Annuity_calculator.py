@@ -298,10 +298,15 @@ with st.sidebar:
     st.header("⚙️ Configuration")
 
     st.subheader("📋 Mortality Table")
-    mort_default = data_file("AG2024.csv")
-    if os.path.exists(mort_default):
-        st.success("✅ Found: AG2024.csv")
-        mort_path = mort_default
+    mort_tables = {}
+    for name, filename in [("AG2024", "AG2024.csv"), ("BVG2020", "BVG2020_validation.csv")]:
+        path = data_file(filename)
+        if os.path.exists(path):
+            mort_tables[name] = path
+    if mort_tables:
+        mort_choice = st.selectbox("Select table", list(mort_tables.keys()))
+        mort_path = mort_tables[mort_choice]
+        st.success(f"✅ Using: {mort_choice}")
     else:
         mort_upload = st.file_uploader(
             "Upload mortality table (CSV/Excel)",
@@ -312,7 +317,7 @@ with st.sidebar:
                 f.write(mort_upload.getbuffer())
             st.success(f"✅ Loaded: {mort_upload.name}")
         else:
-            st.warning("⚠️ Place AG2024.csv in the same folder as this script")
+            st.warning("⚠️ No mortality tables found")
             mort_path = None
 
     st.divider()

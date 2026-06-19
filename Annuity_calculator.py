@@ -393,8 +393,8 @@ with col1:
                 4: "Quarterly", 12: "Monthly"}[x])
         timing = st.selectbox(
             "Payment timing",
-            ["Start of period (due)", "End of period (immediate)"])
-        annuity_due = timing.startswith("Start")
+            ["Prenumerando", "Postnumerando"])
+        annuity_due = timing == "Prenumerando"
 
 with col2:
     st.subheader("💰 Discounting")
